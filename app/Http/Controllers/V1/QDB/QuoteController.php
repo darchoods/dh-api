@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\V1;
+namespace App\Http\Controllers\V1\QDB;
 
 use App\Http\Controllers\BaseApiController;
 use App\Services\ChannelService;

@@ -1,15 +1,13 @@
 <?php
 
-use App\Http\Controllers\V1\QuoteController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::group(['prefix' => 'qdb'], function() {
-    // Route::group(['prefix' => 'search'], function() {
-    //     Route::post('byId', [ReadController::class, 'postFindById']);
-    // });
-    // Route::get('channels', [ReadController::class, 'getChannels']);
-    Route::post('random', [QuoteController::class, 'findRandom']);
-    Route::post('create', [QuoteController::class, 'create']);
-    // Route::post('delete', [ModifyController::class, 'postDeleteById']);
+Route::group(['prefix' => 'darchoods'], function($route) {
+    return require base_path('routes/api/darchoods.php');
+});
+Route::group(['prefix' => 'qdb', 'middleware' => 'auth.api'], function($route) {
+    return require base_path('routes/api/qdb.php');
+});
+Route::group(['prefix' => 'irc', 'middleware' => 'auth.api'], function($route) {
+    return require base_path('routes/api/irc.php');
 });

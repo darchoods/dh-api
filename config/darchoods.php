@@ -1,6 +1,5 @@
 <?php
 
 return [
-  'atheme' => '164.138.28.182:49010',
-  // 'atheme' => '164.138.28.182:8080',
+  'atheme' => 'irc-hub-eu-1.darkscience.net:49011'
 ];

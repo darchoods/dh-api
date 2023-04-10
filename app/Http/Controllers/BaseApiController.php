@@ -15,15 +15,16 @@ class BaseApiController extends BaseController
      * @param  array   $data
      * @return Illuminate\Http\Response
      */
-    public function sendResponse($message, $status, $data = [])
+    public function sendResponse($message = 'ok', $status = 200, $data = [])
     {
         $reply = [
-            'status_code' => $status,
             'message' => $message,
+            'status_code' => $status,
+            'timestamp' => time(),
         ];
 
         if (!empty($data)) {
-            $reply['response'] = $data;
+            $reply['data'] = $data;
         }
 
         return response($reply, $status)

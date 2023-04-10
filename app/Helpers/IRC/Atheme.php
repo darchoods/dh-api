@@ -4,6 +4,7 @@ namespace App\Helpers\IRC;
 
 use Laminas\XmlRpc as XmlRpc;
 use Cookie;
+use Arr;
 
 class Atheme
 {
@@ -13,7 +14,7 @@ class Atheme
     public function __construct()
     {
         [$ip, $port] = explode(':', \Config::get('darchoods.atheme'));
-        $this->xmlURL = 'http://'.$ip.':'.$port.'/xmlrpc';
+        $this->xmlURL = 'https://'.$ip.':'.$port.'/xmlrpc';
     }
 
     public function doCmd()
@@ -31,8 +32,6 @@ class Atheme
         $params[] = $uid;
         $params[] = $nick;
         $params[] = $_SERVER['REMOTE_ADDR'] ?? '127.0.0.1';
-        dump($params);
-        dump($this->params);
         $params = [...$params, ...($this->params !== null ? $this->params : [])];
 
         $request = new XmlRpc\Request();
@@ -96,6 +95,6 @@ class Atheme
         }
 
         $str = $this->parseXML($response->__toString());
-        return [true, array_get($str, 'params.param.value.string', null)];
+        return [true, Arr::get($str, 'params.param.value.string', null)];
     }
 }
