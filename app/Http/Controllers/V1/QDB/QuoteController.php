@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class QuoteController extends BaseApiController
 {
-    public function create(QuoteCreateRequest $request)
+    public function create(Request $request)
     {
         $channel = (new ChannelService)
             ->getChannel($request->get('channel'));

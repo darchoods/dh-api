@@ -2,25 +2,24 @@
 
 namespace App\Console\Commands;
 
+use App\Helpers\Irc\Bot\Client\Client;
 use Illuminate\Console\Command;
-use Illuminate\Support\Carbon;
-use App\Helpers\IRC\Server\Nickserv;
 
-class CheckLogin extends Command
+class TaylorRun extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'dh:check-login';
+    protected $signature = 'tay:run {server=default}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Checks login w/ Darkscience';
+    protected $description = 'Makes Taylor do a bit of running...';
 
     /**
      * Create a new command instance.
@@ -30,6 +29,8 @@ class CheckLogin extends Command
     public function __construct()
     {
         parent::__construct();
+        set_time_limit(0);
+
     }
 
     /**
@@ -39,15 +40,6 @@ class CheckLogin extends Command
      */
     public function handle()
     {
-        $this->line('Grabbing credentials...');
-
-        $user = $this->ask('Username?', 'linky');
-        $pass = $this->secret('Password?');
-
-        $this->line('Attempting authentication with creds given...');
-
-        $response = with(new Nickserv())
-            ->login($user, $pass);
-        dd($response);
+        $irc = new Client($this->argument('server'));
     }
 }

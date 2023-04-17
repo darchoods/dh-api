@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Helpers\IRC;
+namespace App\Helpers\IRC\Server;
 
 class Nickserv extends Atheme
 {
@@ -9,7 +9,9 @@ class Nickserv extends Atheme
         $this->addParams(sprintf('NICKSERV REGISTER %s %s %s', $nickname, $password, $email));
         $response = $this->checkResponse($this->doCmd());
 
-        return ($response[0] === true ? $response : [$response[0], 'Unable to register account. Username already exists.']);
+        return $response[0] === true
+            ? $response
+            : [$response[0], 'Unable to register account. Username already exists.'];
     }
 
     public function login($nickname, $password)

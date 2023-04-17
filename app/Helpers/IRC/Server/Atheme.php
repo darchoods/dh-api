@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Helpers\IRC;
+namespace App\Helpers\IRC\Server;
 
 use Laminas\XmlRpc as XmlRpc;
 use Cookie;

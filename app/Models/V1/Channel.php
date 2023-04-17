@@ -11,8 +11,9 @@ class Channel extends BaseModel
     protected $table = 'quote_channels';
     protected $transformer = ChannelTransformer::class;
     protected $fillable = ['channel'];
+    public $timestamps = false;
 
-    public function quotes() {
+    public function quote() {
         return $this->hasMany(Quote::class);
     }
 }

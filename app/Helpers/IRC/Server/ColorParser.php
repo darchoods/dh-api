@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Helpers\IRC;
+namespace App\Helpers\IRC\Server;
 
 /* This is a PHP5 Class for parsing mIRC color codes and
  * applying the colors via css for html output
