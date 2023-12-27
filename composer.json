@@ -11,7 +11,7 @@
         "laravel/sanctum": "^2.14.1",
         "laravel/tinker": "^2.7",
         "league/fractal": "^0.20.1",
-        "laminas/laminas-xmlrpc": "^2.6"
+        "laminas/laminas-xmlrpc": "^2.19"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

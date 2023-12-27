@@ -7,7 +7,7 @@ use App\Helpers\IRC\Server\Nickserv;
 use Illuminate\Console\Command;
 use Illuminate\Support\Carbon;
 
-class CheckLogin extends Command
+class Chanlist extends Command
 {
     /**
      * The name and signature of the console command.

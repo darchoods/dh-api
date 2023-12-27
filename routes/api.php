@@ -8,6 +8,9 @@ Route::group(['prefix' => 'darchoods'], function($route) {
 Route::group(['prefix' => 'qdb', 'middleware' => 'auth.api'], function($route) {
     return require base_path('routes/api/qdb.php');
 });
+Route::group(['prefix' => 'np'], function($route) {
+    return require base_path('routes/api/radio.php');
+});
 Route::group(['prefix' => 'irc', 'middleware' => 'auth.api'], function($route) {
     return require base_path('routes/api/irc.php');
 });
