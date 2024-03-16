@@ -5,10 +5,6 @@
 - <code>cd dh-api</code>
 - <code>composer install</code>
 
-## Modifying the documentation (on rubidium)
-- <code>npm install</code>
-- <code>npm run hot</code>
-
 ## Manually verifying the PR checks
 
 ### Check 1. PHP Linter
