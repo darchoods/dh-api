@@ -11,6 +11,8 @@ services:
       - ~/.aws:/root/.aws
       # Application code
       - .:/var/www/html:rw
+      # Environment
+      - ./.env.docker:/var/www/html/.env
       # Migration data
       - migrations:/var/www/html/storage/framework/cache/data:rw
       # Session data 
@@ -34,11 +36,6 @@ services:
       - MYSQL_ROOT_PASSWORD=l4r4v3l
     ports:
       - "33060:3306"
-
-networks:
-  default:
-    external:
-      name: darchoods_network
 
 volumes:
   sessions:

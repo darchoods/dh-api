@@ -7,17 +7,9 @@
 
 ## Working with the docker version of this project
 
-Create the docker network that all projects will connect to (this only has to be done once)
-
-```bash
-docker network create --driver=bridge darchoods_network
-```
-
-Once the network is created run:
-
 - <code>docker-compose up -d</code>
 
-The API container should now be available on port `8082` of your host machine and MySQL should be available on port `33060`.
+The API container should be available on `127.0.0.1:8082` and MySQL should be available on port `127.0.0.1:33060`.
 
 ### Arbitrary Commands
 
