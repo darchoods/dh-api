@@ -1,5 +1,5 @@
 <?php
 
 return [
-  'atheme' => 'irc-eace.darkscience.net:49010'
+  'atheme' => env('IRC_SERVICES')
 ];
