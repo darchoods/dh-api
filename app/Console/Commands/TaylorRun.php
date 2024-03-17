@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Helpers\Irc\Bot\Client\Client;
+use App\Helpers\IRC\Bot\Client\Client;
 use Illuminate\Console\Command;
 
 class TaylorRun extends Command

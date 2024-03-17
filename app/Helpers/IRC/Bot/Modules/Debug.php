@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Helpers\IrcBot\Bot\Modules;
+namespace App\Helpers\IRC\Bot\Modules;
 
-use App\Helpers\Irc\Bot\Client\Command;
-use App\Helpers\Irc\Bot\Client\Message;
+use App\Helpers\IRC\Bot\Client\Command;
+use App\Helpers\IRC\Bot\Client\Message;
 use Config;
 
 $trigger = \Config::get('ircbot.bot.command_trigger', '>');

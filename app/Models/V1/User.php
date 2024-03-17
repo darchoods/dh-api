@@ -4,7 +4,6 @@ namespace App\Models\V1;
 
 use App\Models\BaseModel;
 use App\Models\V1\ApiKey;
-use App\Models\V1\User;
 use DB;
 use Arr;
 use Illuminate\Contracts\Auth\Authenticatable;
@@ -16,12 +15,6 @@ class User extends BaseModel implements Authenticatable
     protected $hidden = ['password', 'salt'];
     protected $appends = ['usercode', 'screenname', 'avatar'];
     protected $identifiableName = 'screenname';
-
-    public function user()
-    {
-        return $this->belongsTo(User::class)
-            ->withTimestamps();
-    }
 
     public function roles()
     {

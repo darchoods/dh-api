@@ -2,7 +2,7 @@
 
 use App\Helpers\Irc\Bot\Client\Message;
 
-$path = app_path('Helpers\IRC\Bot\Modules');
+$path = app_path('Helpers/IRC/Bot/Modules');
 
 return [
     'servers' => [
@@ -30,8 +30,9 @@ return [
 
         'join_channels' => [
             '#bots',
+            '#dh-project',
             // '#cybershade',
-            '#darkscience',
+            // '#darkscience',
             // '#darchoods',
             // '#php',
             // '#chasenet',

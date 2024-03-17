@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Helpers\Irc\Bot\Client;
+namespace App\Helpers\IRC\Bot\Client;
 
-use App\Helpers\Irc\Bot\Client\Command;
-use App\Helpers\Irc\Bot\Client\Message;
-use App\Helpers\Irc\Bot\Client\Socket;
+use App\Helpers\IRC\Bot\Client\Command;
+use App\Helpers\IRC\Bot\Client\Message;
+use App\Helpers\IRC\Bot\Client\Socket;
 use Illuminate\Support\Arr;
 use Cache;
 use Config;

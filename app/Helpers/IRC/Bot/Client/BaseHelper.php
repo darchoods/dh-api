@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Helpers\Irc\Bot\Client;
+namespace App\Helpers\IRC\Bot\Client;
 
 use App\Helpers\Irc\Bot\Client\Command;
 use Config;
