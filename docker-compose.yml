@@ -1,0 +1,45 @@
+version: "3.7"
+
+services:
+  api:
+    image: dh-api:${IMAGE_TAG:-latest}
+    platform: linux/amd64
+    build:
+      context: .
+    volumes:
+      # AWS credentials
+      - ~/.aws:/root/.aws
+      # Application code
+      - .:/var/www/html:rw
+      # Migration data
+      - migrations:/var/www/html/storage/framework/cache/data:rw
+      # Session data 
+      - sessions:/var/www/html/storage/framework/sessions:rw
+    environment:
+      SSL_MODE: "${SSL_MODE:-off}"
+      AUTORUN_LARAVEL_STORAGE_LINK: "${AUTORUN_LARAVEL_STORAGE_LINK:-false}"
+      AUTORUN_LARAVEL_MIGRATION: "${AUTORUN_LARAVEL_MIGRATION:-true}"
+      GITHUB_TOKEN: "${GITHUB_TOKEN}"
+    ports:
+      - "8082:80"
+    depends_on:
+      - mysql
+  mysql:
+    image: mysql
+    platform: linux/amd64
+    volumes:
+      - ./storage/db:/var/lib/mysql:rw
+    environment:
+      - MYSQL_DATABASE=laravel
+      - MYSQL_ROOT_PASSWORD=l4r4v3l
+    ports:
+      - "33060:3306"
+
+networks:
+  default:
+    external:
+      name: darchoods_network
+
+volumes:
+  sessions:
+  migrations:
