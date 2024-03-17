@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('slug');
             $table->longText('content');
             $table->integer('view_count')->default(0);
-            $table->bool('hide')->default(0);
+            $table->boolean('hide')->default(0);
             $table->timestamp('publish_at');
             $table->timestamps();
         });
