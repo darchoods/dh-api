@@ -2,25 +2,29 @@
 
 namespace App\Http\Controllers\V1\News;
 
-use App\Http\Controllers\BaseController;
-use App\Models\News;
+use App\Http\Controllers\BaseApiController;
+use App\Models\V1\News;
 
-class NewsController extends BaseController
+class NewsController extends BaseApiController
 {
 
-    public function getNews()
+    public function getAll()
     {
 
-        $posts = News::getCurrent(5);
+        $posts = News::with('author')->getCurrent(5);
 
-        return [
-            'posts' => $posts
-        ];
+        return $this->sendOK([
+            'posts' => $posts->map->transform()
+        ]);
     }
 
-    public function getNewsById(News $news)
+    public function getById(News $news)
     {
-        return $news->transform();
+        $news->load('author');
+        
+        return $this->sendOK([
+            'post' => $news->transform()
+        ]);
     }
 
 }

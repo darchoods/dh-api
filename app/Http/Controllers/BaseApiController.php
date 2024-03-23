@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Http\Request;
 
 class BaseApiController extends BaseController
 {
@@ -20,7 +19,6 @@ class BaseApiController extends BaseController
         $reply = [
             'message' => $message,
             'status_code' => $status,
-            'timestamp' => time(),
         ];
 
         if (!empty($data)) {
