@@ -56,4 +56,18 @@ class QuoteDBService
 
         return $quotes;
     }
+
+    public function getRandom(int $number=5): Collection
+    {
+        $quotes = Quote::query()
+            ->orderBy(DB::Raw('RAND()'))
+            ->take($number)
+            ->get();
+
+        if ($quotes === null) {
+            throw new Exception('Could not get quotes.');
+        }
+
+        return $quotes;
+    }
 }

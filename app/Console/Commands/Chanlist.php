@@ -6,6 +6,8 @@ use App\Helpers\IRC\Server\Chanserv;
 use App\Helpers\IRC\Server\Nickserv;
 use Illuminate\Console\Command;
 use Illuminate\Support\Carbon;
+use Exception;
+use Illuminate\Support\Facades\Cache;
 
 class Chanlist extends Command
 {
@@ -40,8 +42,8 @@ class Chanlist extends Command
      */
     public function handle()
     {
-        $user = $this->ask('Username?', 'linky');
-        $pass = $this->secret('Password?');
+        $user = env('LINKY_IDENT');
+        $pass = env('LINKY_PASS');
 
         [$response, $authToken] = with(new Nickserv())
             ->login($user, $pass);
@@ -70,10 +72,8 @@ class Chanlist extends Command
 
         $this->comment(sprintf('Found %d channels...', $channelList->count()));
 
-        file_put_contents(
-            storage_path('app/irc/channels.txt'),
-            implode("\n", $channelList->pluck('channel')->toArray())
-        );
-        dd($channelList);
+        Cache::rememberForever('irc.channels', function() use($channelList) {
+            return $channelList;
+        });
     }
 }
